@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包的使用</title>
+</head>
+<body>
+<script>
+    /**
+     * 1.闭包就是内部function访问了外部function的属性
+     */
+    function a(){
+        var c=0;
+        function b(){
+            c++;
+        }
+    }
+
+    //2.闭包的this额外要注意
+    /*
+    var Person={
+        name:"张三",
+        getName: function () {
+            var _this=this;     //这里一定要使用_this来保存Person,不然闭包里面调用的this就会指向window
+            return function () {
+                return _this.name;
+            }
+        }
+    };
+    */
+    //3.私有作用域
+    /**
+     *    1.一个自调用函数就能形成一个私有作用于域
+     *    2.静态私有变量
+     */
+    /*
+    (function () {      //使用一个自调用的function来做块级作用域，内部的变量就是私有的了
+        var name="";
+        Person= function (value) {   //Person不使用var 申明就是全局的，这样就能暴露接口了
+           name=value;
+        };
+        Person.prototype.showName= function () {
+            alert(name);
+        }
+    })();
+    var p1=new Person("张三");
+    p1.showName();
+    */
+    //另一种方法
+    var createPerson=function (age){
+            var nAge=age;
+            function Person(){}
+            Person.prototype.showAge= function () {
+                alert(nAge);
+            };
+            return new Person();
+    };
+    var p1=createPerson(12);
+    p1.showAge();
+    var p2=createPerson(45);
+    p2.showAge();
+    //总的来说就是使用闭包,在一个function中存数据，在内部function的原型中存方法
+    //因为闭包能访问外部funtion数据,所以最后只要把接口暴露出去就能访问属性和方法了
+    //使用原型存方法就是为了不重复创建方法
+
+    //在为单例创建私有变量的情况向使用模块模式(一般作为工具方法)
+    var tools=(function () {
+        var property1="";
+        function fn1(){
+
+        }
+        function  fn2(){
+
+        }
+        return{
+            property1:property1,
+            fn1:fn1,
+            fn3:fn2,
+        }
+    })()
+
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

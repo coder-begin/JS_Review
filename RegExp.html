@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>正则表达式</title>
+</head>
+<body>
+<script type="text/javascript">
+	var reg=/im.+12/g;
+	var str="im__12121212";	
+	console.log(str.match(reg));
+
+	//1.非空匹配
+	var reg1=/.+/g;
+	var str1="scasc wcqc	1616";
+	console.log(str1.match(reg1));
+	//2.浮点数匹配(匹配两位小数)
+	var reg2=/\d+\.(\d{2})$/gi;
+	var str2="1.22";
+	console.log(str2.match(reg2));
+	//3.匹配email
+	var reg3=/\w+@\w+\.(com)$/g;
+	var str3="1175@qq.com";
+	console.log(str3.match(reg3));
+	//4.匹配url
+	var reg4=/^(https?:\/\/).+(\.com)$/g;
+	var str4="https://@qq.com";
+	console.log(str4.match(reg4));
+</script>
+</body>
+</html>

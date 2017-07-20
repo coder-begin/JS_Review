@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>内置对象</title>
+</head>
+<body>
+
+
+<script type="text/javascript">
+	javascript的内置对象有6种
+	5种基本类型:Boolean,String,Number,Null,Undefinded
+	1种复杂类型:Object
+	使用typeof 返回的类型有7中:number.string,boolean,undefined,object,function
+	undefined类型:对于没有定义的和没有赋值的变量使用typeof检测都是undefined类型
+	null类型:对于定义的以后会使用的对象初始化为null，typeof检测null类型会返回object
+	boolean类型:number类型转化为boolean类型时候0和NaN会转化为false
+	number类型:对于八进制的表示要使用0开头才能正确解析，而对于以0开头的数字如果含有超过7的数则解析为10进制，否则解析为8进制，16进制则是要以0x开头，可以使用科学记数法来表示极大和极小的数如:(2e5=200000,2e-5=0.00002),不要测试特定的浮点数值如:(0.1+0.2=0.3)它是不等的，因为精度问题，对于超过数值范围的数可以使用isFinite()来判断，将其他类型的数转化为number类型可以使用Number()或者parseInt(要转化的数值,进制)或者parseFloat(要转化的数值,进制)这三种转化方法返回结果可能是不一样的
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM1级基础</title>
+</head>
+<body>
+    <button id="btn1"><span>sasasc</span></button>
+    <div id="box" style="width: 10px;" index="1">
+        <div>
+            <button id="btn">btn</button>
+        </div>
+         <p id="p">"Hello World"</p>
+    </div>
+<script src="js/tools.js"></script>
+<script>
+    /**
+     * 1.所有的节点都实现了Node接口
+     *  node.nodeType可以访问到节点类型
+     *  元素节点的类型:1
+     *  文本节点的类型:3
+     *  属性节点的类型:2(感觉没什么卵用)
+     *  Document的类型:9
+     *
+     *  2.nodeName可以访问到节点标签名(如果他是一个元素的话)
+     *  如果是文本节点返回#text
+     *  如果是document类型则返回#document
+     *
+     *  3.childNodes会返回一个包含所有子节点的nodeList但是这不是一个数组
+     *
+     *  4.parentNode可以返回父节点
+     *
+     *  5.previousSibling访问元素的前一个兄弟节点(两个元素必须紧挨着，只要中间出现空格或者回车符访问的都是文本节点)
+     *
+     *  6.nextSibling访问元素的后一个兄弟节点(注意点和前面一样)
+     *
+     *  7.hasChildNodes()可以判断有无子节点，前提是内部不能用空格，只要有空格就是存在文本子节点
+     *
+     *  8.appendChild()可以为元素在最后添加子节点(如果添加的是元素的子节点，那么就是将这个存在的子节点进行转移)
+     *
+     *  9.insertBefore()可以在某个元素之前添加节点(同样的如果插入的新节点是元素的子节点，那就是位置的转移,如果第二个参数填null，那就是插入到末尾)
+     *
+     *  10.replaceChild()可以替换某个子节点(添加的新节点不能是空，如果想替换成空那就创建一个空文本节点来替换)
+     *
+     *  11.removeChild()可以删除某个子节点
+     *
+     *  12.cloneNode()克隆节点(传入参数true就是连同子节点一起克隆，当事件是写在标签里面的那么事件就会被当成属性一起被克隆了，如果是在js中添加的事件处理则不会被克隆(所以最好先移除事件处理，除非你需要))
+     *
+     *  13.document.documentElement指向的是html，不是body
+     *  document.domain:返回域名
+     *  document.url:返回地址url
+     *  document.referrer:返回链接到此页面的url
+     *  (注:除了domain别的只是可读，不可写,而domain也只能设置为子域名如:www.baidu.com就只能设置为baidu.com)
+     *  document.domain是个很有用的属性,他能突破跨域安全限制(只能是子域),如ke.qq.com内嵌框架mail.qq.com两者是不能互相访问对方的对象的，但是只要将他们都设置为qq.com就能够互相访问了
+     *  但是一旦设置为qq.com就不能在设置为mail.qq.com或者ke.qq.com了,只能向宽松设置(这里只是举例)
+     *
+     *  14.获取元素的方法:
+     *  1.document.getElementById() :根据id来获取元素，当存在两个元素id 相同的时候返回第一个，在ie7-中如果表单元素的name和某个元素的id 相同而这个
+     *  表单元素又在那个元素之前，那么此方法会返回表单元素，即使它的id不匹配，而且ie7-会不分大小写
+     *  2.var oAllKinds=document.getElementsByTagName():这个方法会返回一个HTMLCollection对象包含所有tagName相同的元素，获取其中某个元素可以使用下标[index]或者item(index)
+     *  此外这个方法还提供了另一种获取其中元素的方法:namedItem(name),通过元素的name属性来获取
+     *  注:namedItem()是个很蠢的方法,ie8-都是不支持的，而且获取元素有bug,如果再要获取的元素前面有一个和要获取的元素类型相同而且id等于要获取的元素的name，那么就会返回前面这个元素
+     *  其实还有一个在返回值中获取指定name的元素的方法oAllKinds[name],当然这个方法比namedItem()这个方法还要蠢,ie全部不兼容,而且也有namedItem()一样的毛病
+     *  想要获取所有文档元素document.getElementsByTagName("*");
+     *  3.document.getElementByName(name)：根据name属性来获取元素但是ie9-是不分name和id的，就是说如果id和要获取的name相等一样会被获取到
+     *
+     *  15.document.anchors：所有带name属性的a标签
+     *     document.images:所有图片
+     *     document.forms:所有form表单
+     *     document.links:所有带href属性的a标签
+     *
+     *  16.document也提供了不常用的方法document.write()和document.write()
+     *  在文档加载结束过后在调用这两个方法会重写整个页面,这个方法还有一个用处就是向页面中添加元素
+     *  就像添加html标签一样，只是是在最后添加,而且只能是document添加,所以最常用的还是添加script标签
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     */
+    function test(){
+        alert(1616);
+    }
+    var oBox=document.getElementById("box");
+    var oBtn=document.getElementById("btn");
+    var oP=document.getElementById("p");
+    var btnS=document.getElementsByName("btn");
+//    oBox.appendChild(oBtn);
+//    oBox.writeln("<button onclick='alert(1616)'>show<\/button>");
+    //    oBtn.onclick=test;
+//    var children=oBox.childNodes;
+//    oBox.appendChild(oBtn.cloneNode(true));
+//    console.log(document.nodeName);
+//    for(var i = 0 ; i < children.length ; i++){
+//        console.log(children[i].nodeName);
+//    }
+
+</script>
+</body>
+</html>

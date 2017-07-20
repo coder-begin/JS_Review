@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Date</title>
+</head>
+<body>
+<script type="text/javascript">
+	/*
+		1.初始化Date的方法可以传入时间戳或者字符串形式的时间
+		2.Date().now()或者+Date()可以获取现在的时间戳
+		3.getFullYear()获取年份，getMonth()获取月份，getDate()获取一个月中的第几天，getDay()获取星期几,getHours()获取小时数,getMinutes()获取分钟数,getSeconds()返回日期中的秒数
+	*/
+	var date=new Date(Date.UTC(2015,11,31,12,3,50));
+	console.log(date.getFullYear());
+	console.log(date.getUTCMonth());//0代表1月
+	console.log(date.getDate());//
+	console.log(date.getHours());
+	console.log(date.getMinutes());
+	console.log(date.getSeconds());
+	console.log(date.toUTCString());
+</script>
+</body>
+</html>

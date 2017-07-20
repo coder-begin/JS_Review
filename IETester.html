@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>javascript兼容版本测试</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+    #box {
+        width: 100px;
+        height: 100px;
+        background-color: #aaa;
+    }
+    
+    #child {
+        width: 50px;
+        height: 50px;
+        background: green;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div id="child" index="11">
+            <table id="table">
+                <tr>
+                    <td>cacsac</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!--[if IE]> ascascsac<![endif]-->
+    <script type="text/javascript">
+    /*
+    			1.document.getElementById()此方法在所有浏览器通行
+
+    			2.其他；event.x和firefox:event.PageX
+    			posX=event.x?event.x:event.pageX;
+    			注:ie9以下event要写成window.event
+    			{
+    				ev=ev?ev:window.event;
+    				posX=ev.x?ev.x:ev.pageX;
+    				posY=ev.y?ev.x:ev.pageY;
+    			}
+
+    			3.1.5x以下的火狐访问不到window.location.href，所以使用window.location来兼容
+
+    			4.在访问frame的时候通通使用window.document.getElementById("frameId")来获取
+
+    			5.在ie下可以打开模态窗口，别的浏览器不行，所以打开新窗口通通使用window.open()
+
+    			6.访问父元素:
+    			{
+    				element.parentElement?element.parentElement:element.parentNode;
+    			}
+
+    			7.对于自定义属性ie9下可以直接element.property来访问,但在别的浏览器下和ie9+以上就不行,所以要使用
+    			getAttribute("index")来获取自定义属性
+
+    			8.火狐访问不到event.srcElement属性，只能能访问到event.target;
+    			{
+    				target=event.target?event.target:event.srcElement;
+    			}
+
+    			9.在使用window.body.onload=function的时候
+    			{
+    				window.body.onload=function(){}是可以的
+    				window.body.onload=show是不兼容firefox低版本的
+    				function show(){
+    						...
+    				}
+
+    			}
+
+    			10.ie10以下不支持向table和tr中innerHTML赋值,appendChild()在ie9以下也不管用
+    			{
+    				insertRow()
+    				insertCell()
+    			}
+
+    			11.
+    		*/
+
+    var child = document.getElementById("child");
+    var table = document.getElementById("table");
+    child.onclick = function(ev) {
+        myEv = ev ? ev : window.event;
+        target = myEv.target ? myEv.target : myEv.srcElement;
+        console.log(target);
+    }
+    console.log(document.body.style.offset);
+    </script>
+</body>
+
+</html>

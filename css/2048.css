@@ -1,0 +1,94 @@
+.container{
+	width: 100%;
+	padding: 20px 10px;
+	background-color: #ddd;
+	text-align: center;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+header>h1{
+	margin-bottom: 15px;
+}
+header>p{
+	margin-top: 15px;
+	font-size: 20px;
+	color: #000;
+}
+header>p>span{
+	margin-left: 10px;
+	vertical-align: middle;
+}
+.btn_begin{
+	width: 40px;
+	height: 30px;
+	background-color: #0000FF;
+	padding: 4px 8px;
+	box-sizing: border-box;
+	border-radius:5px;
+}
+.btn_begin:active{
+	background: #aaa;
+}
+.main{
+	width: 100%;
+	border:1px solid #666;
+	box-sizing: border-box;
+	border-radius:4px;
+	margin-top:20px;
+}
+.row:first-child{
+	margin-top: 1%;
+}
+.row>div{
+	float: left;
+	width: 23.11%;
+	height: 40px;
+	border:1px solid #666;
+	margin:0 0 1% 1%;
+	border-radius:3px;
+	position: relative;
+}
+.row>div>div{
+	width: 100%;
+	height:100%;
+	font-size: 30px;
+	font-weight: 900;
+	position: absolute;
+	left:0;
+	top:0;
+	transition:left 1s ,top 1s ;
+}
+.cellBegin{
+	-webkit-animation:newCell 0.5s ease-out;
+	-moz-animation:newCell 0.5s ease-out ;
+	animation:newCell 0.5s ease-out;
+}
+.row:after{
+	content: "";
+	display:block;
+	clear:both;
+}
+@-webkit-keyframes newCell{
+	0%{opacity:0;}
+	20%{opacity:0.2;}
+	40%{opacity:0.4;}
+	60%{opacity:0.6}
+	80%{opacity:0.8}
+	100%{opacity:1;}
+}
+@-moz-keyframes newCell{
+	0%{opacity:0;}
+	20%{opacity:0.2;}
+	40%{opacity:0.4;}
+	60%{opacity:0.6}
+	80%{opacity:0.8}
+	100%{opacity:1;}
+}
+@keyframes newCell{
+	0%{opacity:0;}
+	20%{opacity:0.2;}
+	40%{opacity:0.4;}
+	60%{opacity:0.6}
+	80%{opacity:0.8}
+	100%{opacity:1;}
+}

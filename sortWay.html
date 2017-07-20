@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+			对于两个对象的排序方案:
+		*/
+		var person1={
+			name:"es",
+			age:23,
+			sex:true
+		}
+		var person2={
+			name:"bs",
+			age:23,
+			sex:false
+		}
+		var person3={
+			name:"a",
+			age:25,
+			sex:true
+		}
+		var person4={
+			name:"s",
+			age:26,
+			sex:false
+		}
+		var personArr=[person1,person2,person3,person4];
+		function createSortFn(sortArg){
+			return function(obj1,obj2){
+				var value1=obj1[sortArg];
+				var value2=obj2[sortArg];
+				switch(sortArg){
+					case "name":
+						return value2-value1;
+					break;
+					case "age":
+						return value2-value1;
+					break;
+					case "sex":
+						if(value1==true){
+							return -1;
+						}else{
+							return 1;
+						}
+					break;
+				}
+			}
+
+		}
+		var newPersons=personArr.sort(createSortFn("sex"));
+		console.log(newPersons);
+	</script>
+</body>
+</html>

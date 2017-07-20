@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BOM操作-window对象</title>
+    <style>
+        body{
+            background: green;
+            height: 100%;
+
+            overflow: hidden;
+            position: relative;
+
+
+        }
+    </style>
+</head>
+<body>
+<script src="js/tools.js"></script>
+<script>
+    document.body.style.width=document.documentElement.offsetWidth+"px";
+    var infos=Tools.getClientType();
+    for(var index in infos[0] ){
+        if(infos[0][index]){
+            console.log(index);
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

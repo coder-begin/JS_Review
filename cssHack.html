@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>cssHack测试</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <style type="text/css">
+    /*
+			1."*"对ie7及以下生效
+			.box{
+				*width: 100px;
+				*height: 100px;
+				*background:green;
+			}
+
+			2."-"只对ie6生效
+			.box{
+				-width: 100px;
+				-height: 100px;
+				-background:green;
+			}
+
+			3."+"对ie7及以下生效
+			.box{
+				+width: 100px;
+				+height: 100px;
+				+background:green;
+			}
+
+			4."_"对ie6及以下生效
+			.box{
+				_width: 100px;
+				_height: 100px;
+				_background:green;
+			}
+
+			5."#"对ie7级以下生效
+			.box{
+				#width: 100px;
+				#height: 100px;
+				#background:green;
+			}
+
+			6."\0"对ie8+生效
+			.box{
+				width: 100px\0;
+				height: 100px\0;
+				background:green\0;
+			}
+
+			7."\9"对除了ie11之外的ie版本都生效
+			.box{
+				width: 100px\9;
+				height: 100px\9;
+				background:green\9;
+			}
+
+			8."\9\0"对ie8+生效(除了ie11)
+			.box{
+				width: 100px\0;
+				height: 100px\0;
+				background:green\0;
+			}
+
+			9.在@media中"\9"对ie9/10生效，对别的都不生效
+
+			10.在@media中"\0"对ie9+生效，对别的都不生效
+
+			11.在@media中"\9\0"对ie9/10生效，对别的都不生效
+
+			12."*"前缀加标签选择器对ie7及以下有效
+			*div {
+		        width: 100px;
+		        height: 100px;
+		        background: green;
+		    }
+
+			13."*+"前缀加标签选择器对ie7+有效，而且对别的浏览器也是有效的
+			*+div {
+		        width: 100px;
+		        height: 100px;
+		        background: green;
+		    }
+
+		    14.@media screen\9对ie7/6有效
+
+			15.@media \0screen只对ie8有效
+
+			16.@media \0screen\,screen\9对ie8及以下有效
+
+			17. @media screen\0对ie8+有效
+
+			18.@media screen and (min-width:0\0)对ie9+有效
+				
+			19.@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)对ie10+有效
+		*/
+    
+    *+div {
+        width: 100px;
+        height: 100px;
+        background: green;
+    }
+    
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+		.box{
+			 background: yellow;
+		}
+
+    }
+    </style>
+    <div class="box"></div>
+</body>
+
+</html>

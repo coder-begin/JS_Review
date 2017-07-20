@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		/*
+			1.想要删除数组的最后几项可以使用arr.length=数值的方法
+			var arr=[0,1,2,3,4,5];
+			arr.length=4;
+			alert(arr);//0123,后面几项就没了
+			2.想要在数组最后添加东西可以使用arr[arr.length]=数值的方法，每次添加完东西arr.length都会加1，所以每次都是在最后添加。
+			3.判断一个数据是不是数组可以使用Array.isArray()这个方法。
+			4.将数组连接成字符串可以使用join()方法:
+			var arr=["sas","wfqwf","11","wqwe"];
+			var arrString1=arr.join("!");//sas!wfqwf!11!wqwe
+			var arrString2=arr.join("");//saswfqwf11wqwe
+			console.log(arrString2);
+			5.栈方法push()和pop(),在末尾添加和在末尾删除数据
+			var arr=[0,1,2,3,4,5];
+			arr.push(6);
+			console.log(arr);
+			arr.pop();
+			console.log(arr);
+			6.队列方法:unshift()和shift(),在开头添加数据和删除数据
+			var arr=[0,1,2,3,4,5];
+			arr.unshift(6);//这是添加
+			console.log(arr);
+			arr.shift();//这是移除
+			console.log(arr);
+			7.反转数组；reverse()
+			var arr=[0,1,2,3,4,5];
+			arr.reverse();
+			8.数组排序:sort() 可以传入一个比较函数返回负数代表第一个参数在前面，返回正数代表第二个参数在前面，返回0代表两个参数等价
+			9.concat()可以连接两个数组
+			var arr=[0,1,2,3,4,5,4];
+			var arr1=["ss","www","rrqw"];
+			arr=arr.concat("wqcc",arr1);//[0, 1, 2, 3, 4, 5, 4, "wqcc", "ss", "www", "rrqw"]
+			10.slice(start,end)可以获取数组中从start到end之间的几项(包含start不包含end)
+			var arr=[0,1,2,3,4,5,4];
+			var arr1=arr.slice(1,4);//包含第一项，不包含第4项	
+			11.splice(开始位置，要删除的项数，要插入的项)
+			var arr=[0,1,2,3,4,5,4];
+			arr.splice(1,2,"oo","ww");//从下标为1的数值开始，删除其后面的两项，然后再开始位置向后插入值"oo"和"ww"
+			12.indexOf()和lastIndexOf()从前向后查找和从后向前查找，找到就返回下标，没找到返回-1，必须是严格相等才算找到
+			13.迭代方法:
+			1).every(function(item,index,array){}):如果每一项都返回true,结果就会返回true
+			[0,1,2,3].every(function(item,index,arrary){return item>3})//这就是false
+			2).some(function(item,index,arrary){}):如果有一项返回true,结果就会返回true
+			3).filter(function(item,index,array){}):返回会返回true的值组成的数组
+			4).forEach(function(item,index,array){}):对数组的每一项进行处理，没有返回值
+			5).map(function(item,index,array){}):对数组中的每一项进行一定的操作，返回操作完的数组成的数组
+			6).reduce(function(pre,cur,index,array){})归并方法:前一向的输出作为后一项的输入e.g:
+			var arr=[0,1,2,3,4,5,4];
+			arr.reduce(function(pre,cur,index,array){
+				return pre+cur;
+			});//结果是所有数相加
+		*/
+		var arr=[0,1,2,3,4,5,4];
+		arr.reduce(function(pre,cur,index,array){
+			return pre+cur;
+		});
+		
+		
+		// arr.shift();//这是移除
+		// console.log(arr);
+	</script>
+</body>
+</html>

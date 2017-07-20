@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>控制语句</title>
+</head>
+<body>
+<script type="text/javascript">
+	function doSth(num1,num2){
+		arguments[1]=10;
+		alert(num1+num2);
+		//修改arguments的值也会修改参数的值，但是他们的空间是独立的，只是值会同步而已。
+	}
+	doSth(10,15);
+	var person={
+		name:"shiyu",
+		age:23,
+		sex:"man",
+		get:function(){
+			return 16166;
+		}
+	}
+	var arr=[];
+	for(var index in person){
+		arr.push(index);
+
+	}
+	console.log(arr);
+</script>
+</body>
+</html>

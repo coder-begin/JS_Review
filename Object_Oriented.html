@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object_Oriented</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function enumrateObject(obj){
+			var properties=[];
+			for(var i in obj){
+				properties.push(i);
+			}
+			return properties;
+		}
+		/*
+			1.可以为对象的数据设置访问属性
+			  1).configurable:设置属性是否可以使用delete来删除(一旦设置为false就不能在改为true了)
+			  2).enumerable:设置属性是否可以被for..in..遍历
+			  3).writable:设置属性是否可以被修改
+			  4).value:设置属性值
+			  5).使用
+		*/	
+		var person={
+			name:"张三",
+			age:56
+		}
+		Object.defineProperty(person,"age",{
+			configurable:false,
+			writable:false,
+			enumerable:false,
+			value:66
+		})
+		//alert(person.age);//66
+		delete person.age;//无效
+		//alert(person.age);//66
+		//alert(enumrateObject(person));//name(age无法被遍历)
+
+
+		/*
+			2.访问器属性
+				1).configurable:设置属性是否可以被delete删除
+				2).enumerable:设置属性是否可以被遍历
+				3).get:设置访问属性的时候的属性返回值
+				4).set:设置属性的输入值
+				注:对于要控制的属性需要在属性前面加上"_"否则会出现内存泄漏,当只设置一个的时候另一个访问器属性将不可以使用,如；只设置get那么这个属性就不能重新设置值
+		*/
+		var person1={
+			name:"张三",
+			_age:25,
+			_sex:"man"
+		}
+		Object.defineProperty(person1,"age",{
+			get:function(){
+				return this._age+5;
+			},
+			set:function(newvalue){
+				if(newvalue>30){
+					this._sex="woman";
+					this._age=newvalue;
+				}else{
+					this._age=newvalue;
+				}
+			}
+
+		})
+		Object.defineProperty(person1,"sex",{
+			get:function(){
+				return this._sex;
+			},
+			
+
+		})
+		console.log(person1.age);
+		person1.age=31;
+		console.log(person1.sex);
+
+
+		//也可以一次性设置多个属性:
+		Object.defineProperty(person1,{
+			_sex:{
+				get:function(){
+
+				},
+				set:function(){
+
+				}
+
+			},
+			_age:{
+				get:function(){
+
+				},
+				set:function(){
+					
+				}
+			}
+
+		})
+
+		//获取访问属性:Object.getOwnPropertyDescriptor()
+		//这会返回一个对象
+	</script>
+</body>
+</html>

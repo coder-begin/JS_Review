@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型</title>
+</head>
+<body>
+    <script src="js/tools.js"></script>
+    <script>
+        /*
+        * 1.in方法可以测试对象是否含有某个属性(无论在实例中还是在原型中)
+        *
+        * 2.Object.keys(object)这个方法可以返回对象中的所有属性(不包含原型中的(除非object是原型对象)):注:ie9+才有
+        *
+        * 3.在创建对象的时候只想原型的指针已经存在了，如果创建完对象在修改原型指向的对象，那么之前创建的对象就不能访问修改后的原型对象
+        *
+        *
+        *
+        */
+        function  Person(name,age,sex){
+            this.name=name;
+            this.age=age;
+            this.sex=sex;
+        }
+        Person.prototype= {
+            constructor:Person,
+            showName: function () {
+                console.log(this.name);
+            },
+            showAge: function () {
+                console.log(this.age);
+            }
+        };
+        var p1=new Person("张三",15,"man");
+        p1.showName();
+        p1.showAge();
+        console.log("name" in Person);//true
+        console.log(Object.keys(p1));
+
+        //原型链
+        /*
+        function  Car(){
+            this.Type="bigCar";
+        }
+        Car.prototype.showType= function () {
+            return this.Type;
+        };
+        Car.prototype.type="simpleCar";
+        function  littleCar(){
+            this.Type="littleCar";
+        }
+
+        littleCar.prototype=new Car();
+        var car1=new littleCar();
+        console.log(car1.showType());
+        //访问属性的顺序:子类属性->子类原型(也就是父类实例属性)->父类原型属性
+        //this指向的是调用者,虽然showType是父类的原型方法，但是因为调用的是子类的实例对象,所以this.Type返回的是子类的属性
+        console.log(car1.constructor);//是Car,不是littleCar,虽然这是littleCar的实例，但是因为他的原型指向的是父类的实例,而父类实例的原型是父类,所以最终指向就是父类
+        */
+        //借用构造函数+原型继承方案
+
+        /*
+        function  Car(type){
+            this.Type=type;
+        }
+        Car.prototype.showType= function () {
+            return this.Type;
+        };
+        function  littleCar(type,age){
+            Car.call(this,type);
+            this.age=age;
+        }
+        littleCar.prototype=new Car();
+        littleCar.prototype.constructor=littleCar;
+        var car1=new littleCar("supCar",12);
+       console.log( car1.hasOwnProperty("Type"));//true
+       */
+        /*实现过程:
+            在使用Car.call()这个方法的时候调用的是this指向的是littleCar，所以在父类中
+            this.Type=type就是在给子类添加Type属性，等同于在子类中写上这样一句:this.Type=type
+            使用car1.hasOwnProperty("Type")返回true可以证实,然后的继承父类方法就和之前的一样了
+            虽然继承的父类实例中有Type属性,但是一直没有赋值，所以一直是"undefined";
+            所以看样子是实现了继承，但是实际上并没有给父类属性赋任何值
+        */
+
+
+        //寄生式组合继承(和上面一个继承类似,不同之处在于继承父类的方法通过继承父类原型的副本而不是通过继承父类的实例)
+        //好处:只调用了一次父类构造
+        function  Car(type){
+            this.Type=type;
+        }
+        Car.prototype.showType= function () {
+            return this.Type;
+        };
+        function  littleCar(type,age){
+            Car.call(this,type);
+            this.age=age;
+        }
+        Tools.inheritanceFn(Car,littleCar);
+        var car1=new littleCar("supCar",12);
+        console.log(car1.showType());
+
+    </script>
+</body>
+</html>

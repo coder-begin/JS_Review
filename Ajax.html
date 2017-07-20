@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax请求</title>
+</head>
+<body>
+	<div class="box"></div>
+	<script type="text/javascript">
+		function createXHR(){
+			if(typeof XMLHttpRequest != "undefined"){
+				//能使用XHR
+				return new XMLHttpRequest();
+			}else if(typeof ActiveXObject != "undefined"){
+				//针对IE
+				if(typeof arguments.callee.activeXString != "string"){
+
+				}
+				var version=["MSXML2.XMLHttp.6.0","MSXML2.Http.3.0","MSXML2.XMLHttp"];
+				for(var i=0,j=version.length;i<j;i++){
+					try{
+						new ActiveXObject(version[i]);
+						arguments.callee.activeXString = version[i];
+						break;
+					}catch(e){}
+				}
+				
+				return new ActiveXObject(arguments.callee.activeXString);
+			}else{
+				throw new Error("no XHR available");
+			}
+
+
+		}
+		function sendMsg(method,url,msg_obj,callBack){
+			//判断请求类型
+			
+			switch(method.toLowerCase().trim()){
+				case "post":
+					
+				break;
+				
+				case "get":
+					
+				break;
+				
+				default:
+					throw new Error("method error please input 'post/get');
+			}
+			var xhr=createXHR();
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					if(xhr.status >=200 && xhr.status <300 || xhr.status ==304){
+						callBack(xhr.responseText);
+					}else{
+						throw new Error("request unsuccess");
+					}
+				}
+			}
+			xhr.open(method,url,true);
+			xhr.send(msg_obj);
+			
+		}
+	</script>
+
+</body>
+</html>

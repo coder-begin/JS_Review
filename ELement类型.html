@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Element类型</title>
+</head>
+<body>
+<div id="box" name="sss" title="box">
+    5555
+    <input type="text">
+    <a href="#">5588555</a>
+    555555
+</div>
+     <script src="js/tools.js"></script>
+     <script>
+         var oBox=document.getElementById("box");
+         /**
+          * 1.获取标签名:elem.tagName或者elem.nodeName
+          * (因为在html和xml中返回的类型有大小写区分所以使用时可以都转成大写或者小写
+          */
+            //console.log(oBox.tagName.toLowerCase());
+
+         /**
+          * 2.操作元素属性
+          *   获取元素:
+          *     法一:getAttribute();
+          *     法二:elem.属性，如:elem.style
+          *     (使用getAttribute()取得的值一般为字符串，即使是style和事件处理函数也是返
+          *     回字符串，好处是即使是自定义属性也能够获取到，但是像style这种一般需要的是
+          *     返回对象，所以一般只要不涉及自定义属性都是使用第二种方法来访问和修改，而且
+          *     也方便)
+          *   设置元素属性；
+          *     法一:setAttribute();
+          *     法二:elem.属性="";
+          *     (同样的一般使用法二来设置属性，但是对于自定义属性就只能使用法一了，对于自定
+          *     义属性除了ie7-其他浏览器都无法使用法二来访问)
+          *    删除元素属性:
+          *     removeAttribute()
+          *
+          * 3.attributes：返回元素的所有属性，包括自定义的，提供以下方法来进行操作
+          *    getNamedItem():获取指定名称的属性
+          *    setNamedItem():为元素添加新属性
+          *    removeNamedItem():删除指定名称的属性
+          *    item():获取指定下标的属性
+          *    也可以直接使用[下标来访问]
+          *    (上面获取的都是属性，不是属性值，要获取属性值还需要加nodeValue)
+          *    (要修改属性值可以直接赋值)
+          *    (由于使用起来比较麻烦，比上面的法一还要麻烦，所以一般只要不涉及到属性
+          *    遍历都不会使用这个东西)
+          *    (在ie7-版本中会返回所有可能的属性，不一定是你所写的,如onclick你没写
+          *    它也会返回，所以可以检测specified,如果这个属性为true说明你指定了这个
+          *    属性，没指定就是false)
+          *
+          * 4.创建元素；
+          *  1.document.createElement(标签名):html是不区分标签名的大小写的，但是xml会
+          *    所以统一使用小写就行(这个方法会返回一个DOM对象)，要将他插入到文档中可以使用
+          *    Node操作方法appendChild()。。。
+          *  (2.document.createElement(html字符串),如 “<div></div>”,这种方法可以避免ie7-
+          *    的一些bug,但是这个方法只有在ie8-才会有效,最新的chrome和firefox都不支持)
+          *
+          * 5.创建文档片段:document.createDocumentFragment()
+          *    (文档片段拥有node接口,它的用处就是作为一个容器，但你想在连续创建元素并想
+          *    使用appendChild()等方法将其插入到文档中去的时候，为了避免重复渲染，可以先
+          *    将这些元素添加到文档片段中去，再将文档片段添加到文档中去，当然你也可以使用
+          *    别的办法来实现一次性添加，比如innerHTML)
+          *
+          */
+
+         var fn="(function show(){alert('ssss');}())";
+         Tools.loadCss("css/config.css");
+
+
+     </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>双飞翼布局</title>
+	<style type="text/css">
+		.main{
+			width: 100%;
+			height: 100px;
+			position: relative;
+			
+		}
+		.main_inner{
+			margin: 0 120px 0 140px;
+			height: 100px;
+			background: green;
+			
+		}
+		.left{
+			width: 140px;
+			height: 100px;
+			margin-left: -140px;
+			background: yellow;
+			position: absolute;
+		}
+		.right{
+			width:120px;
+			height: 100px;
+			margin-left: -120px;
+			background: red;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="main_inner"></div>
+	</div>
+	<div class="left"></div>
+	<div class="right"></div>
+</body>
+</html>

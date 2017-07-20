@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+
+	var str="scw我擦擦skksjonosonoincspkps";
+	//1.length属性可以获取字符个数
+	console.log(str.length);//6
+
+	//2.获取第几个字符:charAt(index)
+	console.log(str.charAt(3));//我
+
+	//3.获取第几个字符的字符编码:charCodeAt()
+	console.log(str.charCodeAt(0));//115
+
+	//4.将字符连接起来:concat()
+	console.log(str.concat("你大爷"));//scw我擦擦你大爷
+
+	//5.获取字符的方法:slice(begin,end),substr(begin,length),substring(begin,end)
+	console.log(str.slice(2,5));//w我擦
+	console.log(str.substr(2,3));//w我擦
+	console.log(str.substring(2,5));//w我擦
+
+	//6.位置搜索方法indexOf(要搜索的字符,开始位置)和lastIndexOf()
+	console.log(str.indexOf("w",1));//2
+	//可以找出字符的所有位置
+	function getAllIndex(str,needSearchStr){
+		var indexArr=[];
+		var pos=str.indexOf(needSearchStr);
+		indexArr.push(pos);
+		do{
+			pos=str.indexOf(needSearchStr,pos+1);
+			indexArr.push(pos);
+		}while(str.indexOf(needSearchStr,pos+1)>-1)
+		return indexArr;
+	}
+	console.log(getAllIndex(str,"s"));
+
+	//7.删除前置和后置空格:trim()
+
+	//8.转化大小写:toLowCase(),toUpCase()
+
+	//9.正则匹配:match()返回的匹配完的数组
+	//			 search()返回的是找到的第一个的位置和indexOf()类似
+	//  		 replace(reg,newValue)替换正则匹配到的内容,它的第二个参数也可以是一个function(match,pos,orignText){}
+	//类似trim()的方法:
+	var str="11 1616 sas 888 wwdq";
+	function trim(str){
+		var reg=/(^\s+)|(\s+$)/g;
+		return str.replace(reg,"");
+
+	}
+
+	//10.字符分割；split()
+	console.log(str.split(/\s/));
+
+	//11.将字符编码转化为字符String.fromCharCode();
+	console.log(String.fromCharCode(99));//c
+
+</script>
+</body>
+</html>

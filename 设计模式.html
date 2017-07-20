@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>设计模式</title>
+</head>
+<body>
+	<script type="text/javascript">
+	/*
+		//1.单例模式
+		var Person={
+			name:"张三",
+			age:12
+		};
+
+		//2.工厂模式(自调用方案返回一个对象和jQuery差不多,省去了new对象的过程)
+		function  createPerson(name,age){
+			var obj=new Object();
+			obj.name=name;
+			obj.age=age;
+			return obj;
+		}
+		var p1=createPerson("张三",12);
+
+		//3.构造函数加原型模式
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		Person.prototype={
+			showName: function () {
+				alert(this.name);
+			},
+			showAge: function () {
+				alert(this.age);
+			}
+		};
+		var p2=new Person("张三",12);
+
+		//4.动态原型模式
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+			if(typeof this.showName != "function"){
+				Person.prototype.showName= function () {
+					alert(this.name);
+				}
+			}
+
+		}
+	*/
+		//5.稳妥构造函数(不使用new，不能直接调用对象属性,多用于安全性要求较高的地方)
+		function  Person(name,age){
+			var o=new Object();
+			var name=name;
+			var age=age;
+			o.getAge= function () {
+				return age;
+			};
+			o.getName= function () {
+				return name;
+			};
+			return o;
+		}
+		var p1=Person("张三",13);
+		console.log(p1.age);
+	</script>
+</body>
+</html>

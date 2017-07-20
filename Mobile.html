@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Moblie</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<script type="text/javascript" src="js/classDeal.js"></script>
+		<style type="text/css">
+			body,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			dl,
+			dd,
+			ul,
+			ol {
+				padding: 0;
+			}
+			
+			.box {
+				width: 300px;
+				height: 300px;
+				background-color: #aaa;
+				text-align: center;
+				line-height: 100px;
+			}
+			
+			button {
+				width: 100px;
+				height: 80px;
+				background: blue;
+				border: none;
+				outline: none;
+				-moz-outline: none;
+			}
+			
+			.clickStatus {
+				background: #666;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="box" class="box">
+			<button id="btn">active</button>
+		</div>
+		<script type="text/javascript">
+			/*
+								 * 1.window.orientation可以用来判断现在手机的方向，有以下几个值；0 90 -90 180
+								 *	(chrome和uc是支持的)
+								 * 
+								 * 2.方向改变触发的事件:window.onorientationchange(chrome和uc都支持)
+								 *	最新版的firefox也是支持的
+								 * 
+								 * 3.手机旋转触发的事件:window.ondeviceorientation:这个方法可以监视手机围绕xyz轴旋转
+								 * Z:alpha
+								 * X:beta
+								 * Y:gamma
+								 * 
+								 * 4.监视加速度的事件:ondevicemotion
+								 * ev.acceleration:监视在不考虑重力加速度的情况下各个方向上的加速度
+								 * ev.acceleration.x
+								 * ev.acceleration.y
+								 * ev.acceleration.z
+								 * ev.accelerationIncludingGravity监视在考虑重力加速度的情况下各个方向上的加速度
+								 * (主要是z轴方向的加速度)
+								 * ev.accelerationIncludingGravity.x
+								 * ev.accelerationIncludingGravity.y
+								 * ev.accelerationIncludingGravity.z
+								 * 
+								 * 5.触摸事件；ontouchstart;ontouchend;ontouchmove;ontouchcancel;
+								 * 除了toucheend,其他事件都有按键位置属性
+								 * "clientX:"+ev.touches[0].clientX+"</br>"+
+									"clientY:"+ev.touches[0].clientY+"</br>"+
+									"ID:"+ev.touches[0].identifier+"</br>"+
+									"pageX:"+ev.touches[0].pageX+"</br>"+
+									"pageY:"+ev.touches[0].pageY+"</br>"+
+									"screenX:"+ev.touches[0].screenX+"</br>"+
+									"screenY:"+ev.touches[0].screenY+"</br>"+
+									"target:"+ev.touches[0].target+"</br>";
+								*
+								* 
+								*/
+
+			var box = document.getElementById("box");
+			var btn = document.getElementById("btn");
+
+			
+			btn.onclick = function() {
+				addClass("clickStatus", box);
+				setTimeout(function() {
+					removeClass("clickStatus", box);
+				}, 150);
+			}
+
+			//		var beginX=0,endX=0,beginY=0,endY=0;
+			//		
+			//		document.ontouchstart=function(ev){
+			//			beginX=ev.touches[0].clientX;
+			//			beginY=ev.touches[0].clientY;
+			//		}
+			//		document.ontouchmove=function(ev){
+			//			endX=ev.touches[0].clientX;
+			//			endY=ev.touches[0].clientY;
+			//		}
+			//			
+			//		document.ontouchend=function(){
+			//			box.innerHTML="X位移:"+Math.abs(Math.round(endX-beginX))+"</br>"+
+			//						"Y位移:"+Math.abs(Math.round(endY-beginY));
+			//		}
+		</script>
+
+	</body>
+
+</html>

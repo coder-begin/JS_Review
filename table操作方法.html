@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table操作方法</title>
+</head>
+<body>
+<span>sss1616</span>
+<table id="box">
+    <caption>55551111</caption>
+    <thead>ssss</thead>
+    <tbody>
+    <tr id="tr">
+        <td>55</td>
+        <td>ss</td>
+        <td>cc</td>
+        <td>dd</td>
+    </tr>
+    <tr>
+        <td>55</td>
+        <td>ss</td>
+        <td>cc</td>
+        <td>dd</td>
+    </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <a href="#">ssss</a>
+        </tr>
+    </tfoot>
+</table>
+<script src="js/tools.js"></script>
+<script>
+    var oTable = document.getElementById("box");
+    var oTr = document.getElementById("tr");
+    /**
+     * table元素的操作
+     * (注:在thead和tfoot中的除了tr,td外的所有内容都会被提到table前面)
+     *
+     * 1.table.caption:返回table中caption，返回DOM对象
+     *
+     * 2.table.tBodies:返回tbody的HTMLCollection
+     *
+     * 3.table.tFoot:返回table中tfoot，返回DOM对象
+     *
+     * 4.table.tHead:返回table中tfoot，返回DOM对象
+     *
+     * 5.table.rows:返回行的HTMLCollection
+     *
+     * 6.table.createTHead():在这个table中创建thead,返回这个DOM(ie10+支持)
+     *
+     * 7.table.createTFoot():在这个table中创建tfoot,返回这个DOM(ie10+支持)
+     *
+     * 8.table.createCaption():在这个table中创建caption,返回这个DOM(ie10+支持)
+     *
+     * 9.oTable.deleteRow(pos):删除行tr
+     * (可以是tbody也可以是table,有tbody,即使是table来删除的，最后也会删除tbody中的)
+     *
+     * 10.oTable.insertRow(pos):插入行tr
+     * (可以是tbody也可以是table,有tbody,即使是table来插入的，最后也会在tbody中)
+     *
+     * 11.tr.cells:获取行内的列元素
+     *
+     * 12.tr.insertCell(pos):在行中插入列元素td,返回插入的列
+     *
+     * 13.tr.deleteCell(pos):在行中删除列元素td
+     *
+     *
+     *
+     */
+   // var tHead = oTable.deleteTFoot();
+
+    console.log(oTr.insertCell(1));
+</script>
+</body>
+</html>
