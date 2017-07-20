@@ -2,11 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=EmulateIE10">
     <title>DOM扩展</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: #0000FF;
+        }
+        p{
+            width: 100%;
+            height: 200px;
+            margin-top: 60px;
+            background-color: #0000FF;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            background-color: #aaa;
+        }
+    </style>
 </head>
 <body>
+    <div id="box">
+        <button class="btn btn1 btn2 btn3">1</button>
+        <button class="btn" data-index="1"><span>888</span><span>998</span></button>
+        <button class="btn">3</button>
+
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <p>ascascacacaca</p>
+        <button id="show">showFirstP</button>
+    </div>
     <script src="js/tools.js"></script>
     <script>
+                var oBox=document.getElementById("box");
+        /**
+         * 第一个扩展是选择符API的扩展
+         * 1.elem.querySelector(选择器):参数是css选择器，选取匹配的第一个
+         * 2.elem.querySelectorAll(选择器):选取所有匹配的
+         *  (ie7-不能使用)
+         */
+
+//        oBox.onclick= function () {
+//            console.log("click");
+//        }
+        /**
+         * 第二个扩展是元素遍历选择
+         * 1.elem.childElementCount:返回子元素的个数
+         * 2.firstChildElement:返回第一个子元素
+         * 3.lastChildElement:返回最后一个子元素
+         * 4.previousElementSibling:返回前面一个同辈元素
+         * 5.nextElementSibling:返回后面一个同辈元素
+         * (这上面的属性都是只返回元素节点，不返回文本节点)
+         * (ie9+支持)
+         */
+//            console.log(oBox.firstElementChild);
+
+        /**
+         * 第三个扩展是HTML5(下面是关于 DOM方面的)
+         *  1.elem.getElementsByClassName():通过类名获取元素
+         *  (ie+可以使用)
+         *  2.elem.classList可以获取元素的所有class,下面是classList附带的一些方法
+         *  (ie10+)
+         *  add()：添加class
+         *  remove()：删除class
+         *  toggle()：没有就添加，有就删除
+         *  contains():有就返回true
+         *
+         *  3.document.activeElement:获取获得叫焦点的元素
+         *  4.document.hasFocus():检测用户是否在进行界面交互(可以判断用户是否在使用此页面)
+         *
+         *  5.兼容模式和标准模式的检测:
+         *  document.compatMode:CSS1Compat(标准模式)  BackCompat(混杂模式)
+         *
+         *  6.document.charset:返回字符集
+         *
+         *  7.使用"data-"的自定义属性可以在elem.dataset中找到
+         *
+         *  8.insertAdjacentHTML():在文档中插入html
+         *  参数:beforebegin:在当前元素前面插入同辈元素
+         *      afterend:在当前元素之后插入同辈元素
+         *      afterbegin:在当前元素的第一个子元素之前插入html(类似于insertBefore)
+         *      beforeend:在当前元素的最后一个子元素之后插入元素(类似于appendChild)
+         *      (在使用上述方法的时候最好清除掉事件处理，除非需要)
+         *
+         * 9.elem.scrollIntoView():使得元素滚动到视口中,如果传入参数false则是尽可能的显示全部元素
+         * (和加锚点的方法类似)
+         *
+         * 10.document.documentMode:返回文档模式(知道文档模式就是知道使用的ie几渲染方法)
+         *
+         * 11.childre：返回子元素,不再包含文本节点(ie8-会返回注释节点)
+         *
+         * 12.innerText：返回后代元素中所有文本，设置的时候会将后代元素替换成文本
+         *
+         */
 
     </script>
 </body>
